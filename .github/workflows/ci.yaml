@@ -21,6 +21,10 @@ jobs:
           go-version: '1.19'
 
       - name: Build
+        env:
+          GOOS: ${{ matrix.GOOS }}
+          GOARCH: ${{ matrix.GOARCH }}
+          EXE: ${{ matrix.EXE }}
         run: go build -o build/hello-${{ matrix.GOOS }}-${{ matrix.GOARCH }}${{ matrix.EXE }}
 
       - name: Upload Artifact
